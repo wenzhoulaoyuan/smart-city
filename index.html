@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>智慧城市住房展示平台</title>
+
+
+<style>
+
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:"Microsoft YaHei";
+}
+
+
+body{
+
+background:
+linear-gradient(180deg,#03152f,#062b55);
+
+color:white;
+
+min-height:100vh;
+
+}
+
+
+/*顶部*/
+
+.header{
+
+padding:20px;
+
+text-align:center;
+
+font-size:22px;
+
+font-weight:bold;
+
+letter-spacing:3px;
+
+background:#06244a;
+
+box-shadow:0 0 20px #008cff;
+
+}
+
+
+/*科技边框*/
+
+.card{
+
+margin:15px;
+
+padding:18px;
+
+background:
+
+rgba(0,80,160,0.25);
+
+border:1px solid #008cff;
+
+border-radius:15px;
+
+box-shadow:
+
+0 0 15px rgba(0,150,255,.5);
+
+}
+
+
+/*标题*/
+
+.title{
+
+font-size:20px;
+
+color:#00d8ff;
+
+margin-bottom:12px;
+
+}
+
+
+
+/*图片区域*/
+
+.gallery{
+
+display:flex;
+
+overflow-x:auto;
+
+gap:12px;
+
+scroll-snap-type:x mandatory;
+
+}
+
+
+.gallery img{
+
+width:85%;
+
+border-radius:12px;
+
+scroll-snap-align:center;
+
+}
+
+
+/*数据*/
+
+.info{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:12px;
+
+}
+
+
+
+.item{
+
+background:#073564;
+
+padding:12px;
+
+border-radius:10px;
+
+text-align:center;
+
+}
+
+
+.number{
+
+font-size:22px;
+
+color:#00ffff;
+
+font-weight:bold;
+
+}
+
+
+
+button{
+
+width:100%;
+
+margin-top:15px;
+
+padding:14px;
+
+border:none;
+
+border-radius:30px;
+
+background:#009cff;
+
+color:white;
+
+font-size:16px;
+
+}
+
+
+/*弹窗*/
+
+.popup{
+
+display:none;
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+right:0;
+
+bottom:0;
+
+background:rgba(0,0,0,.7);
+
+align-items:center;
+
+justify-content:center;
+
+}
+
+
+
+.popup div{
+
+width:85%;
+
+background:#05294f;
+
+padding:25px;
+
+border-radius:20px;
+
+border:1px solid #00c8ff;
+
+}
+
+
+
+</style>
+
+
+</head>
+
+
+
+<body>
+
+
+
+<div class="header">
+
+智慧城市 · 房产资源可视化平台
+
+</div>
+
+
+
+<div class="card">
+
+
+<div class="title">
+
+🏢 可出租楼盘监测
+
+</div>
+
+
+<div class="gallery">
+
+
+<img src="image/1.png">
+
+<img src="image/2.png">
+
+<img src="image/3.png">
+
+<img src="image/4.png">
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+<div class="card">
+
+
+<div class="title">
+
+楼盘基本信息
+
+</div>
+
+
+<div class="info">
+
+
+<div class="item">
+
+面积
+
+<div class="number">
+
+120㎡
+
+</div>
+
+</div>
+
+
+<div class="item">
+
+户型
+
+<div class="number">
+
+3室2厅
+
+</div>
+
+</div>
+
+
+<div class="item">
+
+租金
+
+<div class="number">
+
+6500/月
+
+</div>
+
+</div>
+
+
+
+<div class="item">
+
+状态
+
+<div class="number">
+
+可出租
+
+</div>
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<div class="card">
+
+
+<div class="title">
+
+智慧城市数据
+
+</div>
+
+
+
+<div class="info">
+
+
+<div class="item">
+
+区域热度
+
+<div class="number">
+
+92%
+
+</div>
+
+</div>
+
+
+
+<div class="item">
+
+交通指数
+
+<div class="number">
+
+88
+
+</div>
+
+</div>
+
+
+<div class="item">
+
+周边人口
+
+<div class="number">
+
+12.6万
+
+</div>
+
+</div>
+
+
+<div class="item">
+
+商业指数
+
+<div class="number">
+
+95
+
+</div>
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+<div class="card">
+
+
+<div class="title">
+
+楼盘详情
+
+</div>
+
+
+<p>
+
+📍 地址：
+
+滨江智慧城区A座
+
+</p>
+
+
+<p>
+
+🚇 距地铁：
+
+500米
+
+</p>
+
+
+<p>
+
+🏫 周边：
+
+学校、商业中心、医院
+
+</p>
+
+
+<button onclick="showDetail()">
+
+查看智慧分析报告
+
+</button>
+
+
+</div>
+
+
+
+
+<div class="popup" id="popup">
+
+
+<div>
+
+
+<h3>
+
+智慧城市分析报告
+
+</h3>
+
+<br>
+
+
+<p>
+
+该区域未来租赁需求指数较高，
+
+交通便利，商业配套完善。
+
+</p>
+
+
+<br>
+
+
+<button onclick="closeDetail()">
+
+关闭
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+
+<script>
+
+
+function showDetail(){
+
+document.getElementById("popup").style.display="flex";
+
+}
+
+
+function closeDetail(){
+
+document.getElementById("popup").style.display="none";
+
+}
+
+
+</script>
+
+
+
+</body>
+
+
+</html>
