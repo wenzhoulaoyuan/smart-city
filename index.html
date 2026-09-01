@@ -1415,6 +1415,7 @@ let currentVacancyIndex = 0;
    首页楼宇列表
 ========================================================= */
 
+
 function renderBuildingList(){
 
   const list =
@@ -1454,8 +1455,8 @@ function renderBuildingList(){
             <b>${b.area}</b>
             <br>
 
-            空置房源：
-            <b>${b.vacancy.length}套</b>
+            办公面积：
+            <b>${b.office}</b>
             <br>
 
             项目位置：
@@ -1484,6 +1485,8 @@ function renderBuildingList(){
     `).join("");
 
 }
+
+
 
 
 
