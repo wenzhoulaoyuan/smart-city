@@ -1,496 +1,2172 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
 <meta name="theme-color" content="#03152f">
+
 <title>智慧城市住房展示平台</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{width:100%;min-height:100%;background:#03152f;color:#fff;font-family:"Microsoft YaHei","PingFang SC",Arial,sans-serif}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent
+}
+
+html,body{
+  width:100%;
+  min-height:100%;
+  background:#03152f;
+  color:#fff;
+  font-family:"Microsoft YaHei","PingFang SC",Arial,sans-serif
+}
+
 body{
   background:
     radial-gradient(circle at 20% 0%,rgba(0,184,255,.16),transparent 32%),
     radial-gradient(circle at 90% 15%,rgba(0,88,255,.18),transparent 28%),
     linear-gradient(180deg,#03152f 0%,#062b55 55%,#041b35 100%);
 }
-button{font:inherit}
-.app{width:100%;min-height:100vh;overflow-x:hidden}
-.page{display:none;min-height:100vh;padding-bottom:28px}
-.page.active{display:block}
 
-/* 顶部 */
+button{
+  font:inherit
+}
+
+.app{
+  width:100%;
+  min-height:100vh;
+  overflow-x:hidden
+}
+
+.page{
+  display:none;
+  min-height:100vh;
+  padding-bottom:28px
+}
+
+.page.active{
+  display:block
+}
+
+
+/* =========================
+   顶部
+========================= */
+
 .header{
-  position:sticky;top:0;z-index:20;
-  min-height:64px;padding:15px 16px;
-  display:flex;align-items:center;justify-content:center;
+  position:sticky;
+  top:0;
+  z-index:20;
+
+  min-height:64px;
+  padding:15px 16px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
   background:rgba(3,21,47,.92);
+
   border-bottom:1px solid rgba(0,196,255,.4);
+
   box-shadow:0 0 20px rgba(0,140,255,.25);
-  backdrop-filter:blur(12px);
-}
-.header-title{font-size:20px;font-weight:700;letter-spacing:2px;color:#eafaff;text-align:center}
-.header-back{
-  position:absolute;left:14px;top:50%;transform:translateY(-50%);
-  border:1px solid rgba(0,205,255,.45);background:rgba(0,92,160,.28);
-  color:#c8f5ff;border-radius:10px;padding:7px 11px;font-size:14px
+
+  backdrop-filter:blur(12px)
 }
 
-/* 首页/列表 */
+.header-title{
+  font-size:20px;
+  font-weight:700;
+  letter-spacing:2px;
+  color:#eafaff;
+  text-align:center
+}
+
+.header-back{
+  position:absolute;
+  left:14px;
+  top:50%;
+  transform:translateY(-50%);
+
+  border:1px solid rgba(0,205,255,.45);
+
+  background:rgba(0,92,160,.28);
+
+  color:#c8f5ff;
+
+  border-radius:10px;
+
+  padding:7px 11px;
+
+  font-size:14px
+}
+
+
+/* =========================
+   首页
+========================= */
+
 .hero{
   margin:16px;
+
   padding:20px 18px;
+
   border:1px solid rgba(0,196,255,.55);
+
   border-radius:18px;
-  background:linear-gradient(145deg,rgba(0,115,190,.28),rgba(0,45,95,.28));
-  box-shadow:inset 0 0 30px rgba(0,150,255,.08),0 8px 28px rgba(0,0,0,.18);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(0,115,190,.28),
+      rgba(0,45,95,.28)
+    );
+
+  box-shadow:
+    inset 0 0 30px rgba(0,150,255,.08),
+    0 8px 28px rgba(0,0,0,.18)
 }
-.hero-kicker{font-size:13px;color:#55dfff;letter-spacing:1.5px;margin-bottom:8px}
-.hero-title{font-size:24px;font-weight:800;letter-spacing:1px}
-.hero-sub{font-size:13px;color:#8eb6cf;line-height:1.65;margin-top:8px}
-.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}
-.hero-stat{padding:10px 6px;background:rgba(3,65,118,.48);border-radius:12px;text-align:center}
-.hero-stat strong{display:block;font-size:19px;color:#00e6ff}
-.hero-stat span{display:block;font-size:11px;color:#94b8cf;margin-top:3px}
 
-.section-head{display:flex;align-items:end;justify-content:space-between;padding:2px 16px 10px}
-.section-head h2{font-size:19px;color:#00d8ff}
-.section-head span{font-size:11px;color:#7399b1}
+.hero-kicker{
+  font-size:13px;
+  color:#55dfff;
+  letter-spacing:1.5px;
+  margin-bottom:8px
+}
 
-.building-list{padding:0 14px}
+.hero-title{
+  font-size:24px;
+  font-weight:800;
+  letter-spacing:1px
+}
+
+.hero-sub{
+  font-size:13px;
+  color:#8eb6cf;
+  line-height:1.65;
+  margin-top:8px
+}
+
+.hero-stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin-top:16px
+}
+
+.hero-stat{
+  padding:10px 6px;
+  background:rgba(3,65,118,.48);
+  border-radius:12px;
+  text-align:center
+}
+
+.hero-stat strong{
+  display:block;
+  font-size:19px;
+  color:#00e6ff
+}
+
+.hero-stat span{
+  display:block;
+  font-size:11px;
+  color:#94b8cf;
+  margin-top:3px
+}
+
+.section-head{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  padding:2px 16px 10px
+}
+
+.section-head h2{
+  font-size:19px;
+  color:#00d8ff
+}
+
+.section-head span{
+  font-size:11px;
+  color:#7399b1
+}
+
+.building-list{
+  padding:0 14px
+}
+
 .building-card{
   position:relative;
-  display:flex;gap:12px;
+
+  display:flex;
+  gap:12px;
+
   padding:12px;
+
   margin-bottom:12px;
+
   min-height:142px;
+
   border:1px solid rgba(0,171,255,.38);
+
   border-radius:16px;
-  background:linear-gradient(135deg,rgba(0,78,140,.33),rgba(3,34,72,.62));
-  box-shadow:0 8px 24px rgba(0,0,0,.16),inset 0 0 20px rgba(0,151,255,.05);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(0,78,140,.33),
+      rgba(3,34,72,.62)
+    );
+
+  box-shadow:
+    0 8px 24px rgba(0,0,0,.16),
+    inset 0 0 20px rgba(0,151,255,.05)
 }
+
 .building-thumb{
-  width:105px;height:118px;flex:0 0 105px;
-  border-radius:11px;overflow:hidden;
+  width:105px;
+  height:118px;
+  flex:0 0 105px;
+
+  border-radius:11px;
+  overflow:hidden;
+
   border:1px solid rgba(0,213,255,.35);
-  background:#08284b;
+
+  background:#08284b
 }
-.building-thumb img{width:100%;height:100%;object-fit:cover;display:block}
-.building-main{min-width:0;flex:1;display:flex;flex-direction:column}
-.building-name{font-size:17px;font-weight:700;color:#fff;margin-bottom:5px}
+
+.building-thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block
+}
+
+.building-main{
+  min-width:0;
+  flex:1;
+  display:flex;
+  flex-direction:column
+}
+
+.building-name{
+  font-size:17px;
+  font-weight:700;
+  color:#fff;
+  margin-bottom:5px
+}
+
 .building-tag{
-  align-self:flex-start;padding:3px 8px;border-radius:999px;
-  background:rgba(0,194,255,.12);color:#70e7ff;border:1px solid rgba(0,206,255,.28);
-  font-size:10px;margin-bottom:7px
+  align-self:flex-start;
+
+  padding:3px 8px;
+
+  border-radius:999px;
+
+  background:rgba(0,194,255,.12);
+
+  color:#70e7ff;
+
+  border:1px solid rgba(0,206,255,.28);
+
+  font-size:10px;
+
+  margin-bottom:7px
 }
-.building-meta{font-size:12px;color:#b4cfe0;line-height:1.6}
-.building-meta b{color:#dff8ff;font-weight:600}
+
+.building-meta{
+  font-size:12px;
+  color:#b4cfe0;
+  line-height:1.6
+}
+
+.building-meta b{
+  color:#dff8ff;
+  font-weight:600
+}
+
 .building-desc{
-  margin-top:4px;font-size:11px;line-height:1.45;color:#7fa5bc;
-  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden
+  margin-top:4px;
+
+  font-size:11px;
+  line-height:1.45;
+  color:#7fa5bc;
+
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden
 }
+
 .view-btn{
-  margin-top:auto;align-self:flex-end;
-  min-width:68px;padding:7px 12px;border-radius:9px;
+  margin-top:auto;
+  align-self:flex-end;
+
+  min-width:68px;
+
+  padding:7px 12px;
+
+  border-radius:9px;
+
   border:1px solid rgba(0,217,255,.55);
-  background:linear-gradient(180deg,#048fe0,#006ab4);
-  color:#fff;font-size:12px;box-shadow:0 4px 12px rgba(0,150,255,.23)
+
+  background:
+    linear-gradient(
+      180deg,
+      #048fe0,
+      #006ab4
+    );
+
+  color:#fff;
+
+  font-size:12px;
+
+  box-shadow:0 4px 12px rgba(0,150,255,.23)
 }
-.view-btn:active,.primary-btn:active,.header-back:active{transform:scale(.97)}
+
+.view-btn:active,
+.primary-btn:active,
+.header-back:active{
+  transform:scale(.97)
+}
 
 .notice{
   margin:14px 16px 0;
+
   padding:10px 12px;
+
   border-left:3px solid #00d8ff;
+
   background:rgba(0,88,150,.16);
-  color:#84a9bd;font-size:11px;line-height:1.55
+
+  color:#84a9bd;
+
+  font-size:11px;
+
+  line-height:1.55
 }
 
-/* 详情 */
-.detail-wrap{padding:0 14px}
+
+/* =========================
+   详情页
+========================= */
+
+.detail-wrap{
+  padding:0 14px
+}
+
 .detail-banner{
-  margin-top:14px;border:1px solid rgba(0,195,255,.46);border-radius:17px;
-  overflow:hidden;background:#06294c;box-shadow:0 10px 25px rgba(0,0,0,.18)
+  margin-top:14px;
+
+  border:1px solid rgba(0,195,255,.46);
+
+  border-radius:17px;
+
+  overflow:hidden;
+
+  background:#06294c;
+
+  box-shadow:0 10px 25px rgba(0,0,0,.18)
 }
+
 .gallery{
-  position:relative;display:flex;overflow-x:auto;gap:0;
-  scroll-snap-type:x mandatory;overscroll-behavior-x:contain;
-  scrollbar-width:none;touch-action:pan-x;
+  position:relative;
+
+  display:flex;
+
+  overflow-x:auto;
+
+  gap:0;
+
+  scroll-snap-type:x mandatory;
+
+  overscroll-behavior-x:contain;
+
+  scrollbar-width:none;
+
+  touch-action:pan-x
 }
-.gallery::-webkit-scrollbar{display:none}
+
+.gallery::-webkit-scrollbar{
+  display:none
+}
+
 .gallery-slide{
-  min-width:100%;height:245px;scroll-snap-align:center;position:relative;background:#061a31
+  min-width:100%;
+
+  height:245px;
+
+  scroll-snap-align:center;
+
+  position:relative;
+
+  background:#061a31
 }
-.gallery-slide img{width:100%;height:100%;object-fit:cover;display:block;cursor:zoom-in}
+
+.gallery-slide img{
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+
+  display:block;
+
+  cursor:zoom-in
+}
+
 .gallery-tip{
-  position:absolute;left:12px;bottom:10px;padding:5px 8px;border-radius:8px;
-  background:rgba(0,0,0,.45);font-size:10px;color:#eafaff
+  position:absolute;
+
+  left:12px;
+  bottom:10px;
+
+  padding:5px 8px;
+
+  border-radius:8px;
+
+  background:rgba(0,0,0,.45);
+
+  font-size:10px;
+
+  color:#eafaff
 }
+
 .gallery-count{
-  position:absolute;right:12px;top:10px;padding:5px 8px;border-radius:8px;
-  background:rgba(0,0,0,.5);font-size:11px;color:#fff
+  position:absolute;
+
+  right:12px;
+  top:10px;
+
+  padding:5px 8px;
+
+  border-radius:8px;
+
+  background:rgba(0,0,0,.5);
+
+  font-size:11px;
+
+  color:#fff
 }
-.dots{display:flex;justify-content:center;gap:5px;padding:9px;background:rgba(2,25,49,.9)}
-.dot{width:6px;height:6px;border-radius:50%;background:#40657d}
-.dot.active{width:17px;border-radius:999px;background:#00dfff}
+
+.dots{
+  display:flex;
+
+  justify-content:center;
+
+  gap:5px;
+
+  padding:9px;
+
+  background:rgba(2,25,49,.9)
+}
+
+.dot{
+  width:6px;
+  height:6px;
+
+  border-radius:50%;
+
+  background:#40657d;
+
+  transition:.2s
+}
+
+.dot.active{
+  width:17px;
+
+  border-radius:999px;
+
+  background:#00dfff
+}
+
+
+/* 当前房源提示 */
+
+.current-vacancy{
+  margin-top:10px;
+
+  padding:8px 12px;
+
+  border-radius:10px;
+
+  background:rgba(0,180,255,.08);
+
+  border:1px solid rgba(0,210,255,.2);
+
+  color:#78dff5;
+
+  font-size:11px;
+
+  text-align:center
+}
+
+
+/* 楼宇标题 */
+
 .detail-title-card{
-  margin-top:12px;padding:15px;border-radius:15px;
+  margin-top:12px;
+
+  padding:15px;
+
+  border-radius:15px;
+
   border:1px solid rgba(0,179,255,.35);
-  background:linear-gradient(135deg,rgba(0,77,135,.3),rgba(2,35,73,.55))
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(0,77,135,.3),
+      rgba(2,35,73,.55)
+    )
 }
-.detail-title-line{display:flex;justify-content:space-between;gap:10px;align-items:start}
-.detail-name{font-size:20px;font-weight:800}
+
+.detail-title-line{
+  display:flex;
+
+  justify-content:space-between;
+
+  gap:10px;
+
+  align-items:start
+}
+
+.detail-name{
+  font-size:20px;
+  font-weight:800
+}
+
 .status{
-  flex:0 0 auto;padding:5px 9px;border-radius:999px;
-  background:rgba(0,216,151,.13);border:1px solid rgba(0,220,170,.35);
-  color:#65efcf;font-size:10px
+  flex:0 0 auto;
+
+  padding:5px 9px;
+
+  border-radius:999px;
+
+  background:rgba(0,216,151,.13);
+
+  border:1px solid rgba(0,220,170,.35);
+
+  color:#65efcf;
+
+  font-size:10px
 }
-.detail-location{margin-top:7px;font-size:12px;color:#8eb5c8}
-.info-card,.data-card{
-  margin-top:12px;padding:15px;border-radius:15px;
+
+.detail-location{
+  margin-top:7px;
+
+  font-size:12px;
+
+  color:#8eb5c8
+}
+
+
+/* =========================
+   房源信息
+========================= */
+
+.info-card,
+.data-card{
+  margin-top:12px;
+
+  padding:15px;
+
+  border-radius:15px;
+
   border:1px solid rgba(0,160,255,.3);
+
   background:rgba(1,51,95,.38)
 }
+
 .card-title{
-  font-size:16px;color:#00d8ff;font-weight:700;padding-left:9px;
-  border-left:3px solid #00dfff;margin-bottom:12px
-}
-.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
-.info-item{padding:11px 10px;border-radius:10px;background:rgba(4,58,104,.65)}
-.info-item span{display:block;font-size:10px;color:#789fb5;margin-bottom:5px}
-.info-item strong{font-size:16px;color:#eafdff}
-.summary{font-size:12px;color:#a4c1d0;line-height:1.85}
-.summary b{color:#eafaff}
-.data-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
-.data-box{text-align:center;padding:11px 7px;border-radius:10px;background:rgba(4,58,104,.65)}
-.data-box strong{display:block;font-size:21px;color:#00eaff}
-.data-box span{font-size:10px;color:#7ea8bd}
-.primary-btn{
-  width:100%;margin-top:14px;padding:13px;border:0;border-radius:12px;
-  background:linear-gradient(135deg,#00a8ea,#0066c5);color:#fff;
-  font-size:14px;font-weight:700;box-shadow:0 8px 20px rgba(0,151,255,.2)
+  font-size:16px;
+
+  color:#00d8ff;
+
+  font-weight:700;
+
+  padding-left:9px;
+
+  border-left:3px solid #00dfff;
+
+  margin-bottom:12px
 }
 
-/* 弹窗/全屏照片 */
-.modal{
-  display:none;position:fixed;inset:0;z-index:100;
-  background:rgba(0,0,0,.74);align-items:center;justify-content:center;padding:20px
+.info-grid{
+  display:grid;
+
+  grid-template-columns:1fr 1fr;
+
+  gap:9px
 }
-.modal.show{display:flex}
+
+.info-item{
+  padding:11px 10px;
+
+  border-radius:10px;
+
+  background:rgba(4,58,104,.65);
+
+  transition:opacity .15s
+}
+
+.info-item span{
+  display:block;
+
+  font-size:10px;
+
+  color:#789fb5;
+
+  margin-bottom:5px
+}
+
+.info-item strong{
+  font-size:16px;
+
+  color:#eafdff
+}
+
+
+/* 数据切换提示 */
+
+.vacancy-switch{
+  margin-top:9px;
+
+  font-size:10px;
+
+  color:#6e9db5;
+
+  text-align:center
+}
+
+
+/* =========================
+   项目概况
+========================= */
+
+.summary{
+  font-size:12px;
+
+  color:#a4c1d0;
+
+  line-height:1.85
+}
+
+.summary b{
+  color:#eafaff
+}
+
+
+/* =========================
+   智慧城市数据
+========================= */
+
+.data-grid{
+  display:grid;
+
+  grid-template-columns:1fr 1fr;
+
+  gap:9px
+}
+
+.data-box{
+  text-align:center;
+
+  padding:11px 7px;
+
+  border-radius:10px;
+
+  background:rgba(4,58,104,.65)
+}
+
+.data-box strong{
+  display:block;
+
+  font-size:21px;
+
+  color:#00eaff
+}
+
+.data-box span{
+  font-size:10px;
+
+  color:#7ea8bd
+}
+
+.primary-btn{
+  width:100%;
+
+  margin-top:14px;
+
+  padding:13px;
+
+  border:0;
+
+  border-radius:12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #00a8ea,
+      #0066c5
+    );
+
+  color:#fff;
+
+  font-size:14px;
+
+  font-weight:700;
+
+  box-shadow:0 8px 20px rgba(0,151,255,.2)
+}
+
+
+/* =========================
+   弹窗
+========================= */
+
+.modal{
+  display:none;
+
+  position:fixed;
+
+  inset:0;
+
+  z-index:100;
+
+  background:rgba(0,0,0,.74);
+
+  align-items:center;
+
+  justify-content:center;
+
+  padding:20px
+}
+
+.modal.show{
+  display:flex
+}
+
 .modal-card{
-  width:min(92vw,420px);max-height:84vh;overflow:auto;
-  background:#05294f;border:1px solid #00c8ff;border-radius:18px;padding:20px;
+  width:min(92vw,420px);
+
+  max-height:84vh;
+
+  overflow:auto;
+
+  background:#05294f;
+
+  border:1px solid #00c8ff;
+
+  border-radius:18px;
+
+  padding:20px;
+
   box-shadow:0 0 35px rgba(0,180,255,.24)
 }
-.modal-card h3{font-size:18px;color:#00ddff;margin-bottom:12px}
-.modal-card p{font-size:13px;color:#b0cad8;line-height:1.8}
-.modal-btn{width:100%;margin-top:15px;padding:12px;border:0;border-radius:11px;background:#057fc9;color:#fff}
-.photo-viewer{
-  display:none;position:fixed;inset:0;z-index:200;
-  background:rgba(0,0,0,.95);align-items:center;justify-content:center
-}
-.photo-viewer.show{display:flex}
-.photo-viewer img{max-width:100vw;max-height:100vh;width:auto;height:auto;object-fit:contain}
-.photo-close{
-  position:absolute;right:16px;top:15px;z-index:202;
-  width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.4);
-  background:rgba(0,0,0,.5);color:#fff;font-size:23px
-}
-.photo-hint{
-  position:absolute;left:50%;bottom:24px;transform:translateX(-50%);
-  padding:7px 10px;border-radius:9px;background:rgba(0,0,0,.55);
-  color:#d7f8ff;font-size:10px;white-space:nowrap
+
+.modal-card h3{
+  font-size:18px;
+
+  color:#00ddff;
+
+  margin-bottom:12px
 }
 
-/* 小屏优化 */
-@media (max-width:360px){
-  .building-thumb{width:92px;flex-basis:92px}
-  .building-card{min-height:132px}
-  .building-name{font-size:16px}
-  .hero-title{font-size:22px}
+.modal-card p{
+  font-size:13px;
+
+  color:#b0cad8;
+
+  line-height:1.8
 }
+
+.modal-btn{
+  width:100%;
+
+  margin-top:15px;
+
+  padding:12px;
+
+  border:0;
+
+  border-radius:11px;
+
+  background:#057fc9;
+
+  color:#fff
+}
+
+
+/* =========================
+   全屏照片
+========================= */
+
+.photo-viewer{
+  display:none;
+
+  position:fixed;
+
+  inset:0;
+
+  z-index:200;
+
+  background:rgba(0,0,0,.95);
+
+  align-items:center;
+
+  justify-content:center
+}
+
+.photo-viewer.show{
+  display:flex
+}
+
+.photo-viewer img{
+  max-width:100vw;
+
+  max-height:100vh;
+
+  width:auto;
+
+  height:auto;
+
+  object-fit:contain
+}
+
+.photo-close{
+  position:absolute;
+
+  right:16px;
+
+  top:15px;
+
+  z-index:202;
+
+  width:38px;
+
+  height:38px;
+
+  border-radius:50%;
+
+  border:1px solid rgba(255,255,255,.4);
+
+  background:rgba(0,0,0,.5);
+
+  color:#fff;
+
+  font-size:23px
+}
+
+.photo-hint{
+  position:absolute;
+
+  left:50%;
+
+  bottom:24px;
+
+  transform:translateX(-50%);
+
+  padding:7px 10px;
+
+  border-radius:9px;
+
+  background:rgba(0,0,0,.55);
+
+  color:#d7f8ff;
+
+  font-size:10px;
+
+  white-space:nowrap
+}
+
+
+/* =========================
+   小屏优化
+========================= */
+
+@media (max-width:360px){
+
+  .building-thumb{
+    width:92px;
+    flex-basis:92px
+  }
+
+  .building-card{
+    min-height:132px
+  }
+
+  .building-name{
+    font-size:16px
+  }
+
+  .hero-title{
+    font-size:22px
+  }
+
+}
+
 </style>
+
 </head>
 
+
 <body>
+
 <div class="app">
 
-  <!-- 楼宇房源推介页 -->
-  <section id="listPage" class="page active">
-    <header class="header">
-      <div class="header-title">滨江街道商务社区 · 房源资源平台</div>
-    </header>
 
-    <div class="hero">
-      <div class="hero-kicker">CITY ASSET VISUALIZATION</div>
-      <div class="hero-title">楼宇房源推介</div>
-      <div class="hero-sub">面向移动端的城市楼宇资源展示与智能推介界面</div>
-      <div class="hero-stats">
-        <div class="hero-stat"><strong>38</strong><span>在租楼宇</span></div>
-        <div class="hero-stat"><strong>126</strong><span>可租房源</span></div>
-        <div class="hero-stat"><strong>92%</strong><span>资源匹配度</span></div>
-      </div>
-    </div>
+<!-- =========================
+     楼宇房源推介页
+========================= -->
 
-    <div class="section-head">
-      <h2>重点楼宇推荐</h2>
-      <span>向下滑动查看更多</span>
-    </div>
+<section id="listPage" class="page active">
 
-    <div id="buildingList" class="building-list"></div>
+<header class="header">
 
-    <div class="notice">
-      本页面为智慧城市移动端演示界面。楼宇数据、图片和指标均可在后续演示中替换为实际项目资料。
-    </div>
-  </section>
-
-  <!-- 楼宇详情页 -->
-  <section id="detailPage" class="page">
-    <header class="header">
-      <button class="header-back" onclick="goBack()">‹ 返回</button>
-      <div class="header-title">楼宇资源详情</div>
-    </header>
-
-    <main class="detail-wrap">
-      <div id="detailContent"></div>
-    </main>
-  </section>
-
-</div>
-
-<!-- 智慧分析弹窗 -->
-<div id="reportModal" class="modal" onclick="closeReport(event)">
-  <div class="modal-card" onclick="event.stopPropagation()">
-    <h3>智慧城市分析报告</h3>
-    <p id="reportText"></p>
-    <button class="modal-btn" onclick="hideReport()">关闭</button>
+  <div class="header-title">
+    滨江街道商务社区 · 房源资源平台
   </div>
+
+</header>
+
+
+<div class="hero">
+
+  <div class="hero-kicker">
+    CITY ASSET VISUALIZATION
+  </div>
+
+  <div class="hero-title">
+    楼宇房源推介
+  </div>
+
+  <div class="hero-sub">
+    面向移动端的城市楼宇资源展示与智能推介界面
+  </div>
+
+  <div class="hero-stats">
+
+    <div class="hero-stat">
+      <strong>34幢</strong>
+      <span>在租楼宇</span>
+    </div>
+
+    <div class="hero-stat">
+      <strong>497870㎡</strong>
+      <span>可租房源</span>
+    </div>
+
+    <div class="hero-stat">
+      <strong>82张</strong>
+      <span>楼宇配套照片</span>
+    </div>
+
+  </div>
+
 </div>
 
-<!-- 照片全屏查看 -->
-<div id="photoViewer" class="photo-viewer">
-  <button class="photo-close" onclick="closePhoto()">×</button>
-  <img id="fullPhoto" src="" alt="楼宇照片">
-  <div class="photo-hint">点击 × 返回楼宇详情</div>
+
+<div class="section-head">
+
+  <h2>重点楼宇推荐</h2>
+
+  <span>向下滑动查看更多</span>
+
 </div>
+
+
+<div id="buildingList" class="building-list"></div>
+
+
+<div class="notice">
+
+  本页面为智慧城市移动端演示界面。
+  楼宇数据、图片和指标均可在后续演示中替换为实际项目资料。
+
+</div>
+
+</section>
+
+
+
+<!-- =========================
+     楼宇详情页
+========================= -->
+
+<section id="detailPage" class="page">
+
+<header class="header">
+
+  <button class="header-back" onclick="goBack()">
+    ‹ 返回
+  </button>
+
+  <div class="header-title">
+    楼宇资源详情
+  </div>
+
+</header>
+
+
+<main class="detail-wrap">
+
+  <div id="detailContent"></div>
+
+</main>
+
+</section>
+
+</div>
+
+
+
+<!-- =========================
+     智慧分析弹窗
+========================= -->
+
+<div id="reportModal"
+     class="modal"
+     onclick="closeReport(event)">
+
+  <div class="modal-card"
+       onclick="event.stopPropagation()">
+
+    <h3>
+      智慧城市分析报告
+    </h3>
+
+    <p id="reportText"></p>
+
+    <button class="modal-btn"
+            onclick="hideReport()">
+
+      关闭
+
+    </button>
+
+  </div>
+
+</div>
+
+
+
+<!-- =========================
+     照片全屏查看
+========================= -->
+
+<div id="photoViewer"
+     class="photo-viewer">
+
+  <button class="photo-close"
+          onclick="closePhoto()">
+
+    ×
+
+  </button>
+
+  <img id="fullPhoto"
+       src=""
+       alt="楼宇照片">
+
+  <div class="photo-hint">
+    点击 × 返回楼宇详情
+  </div>
+
+</div>
+
+
 
 <script>
+
+
+/* =========================================================
+   楼宇数据
+   ---------------------------------------------------------
+   重要：
+   vacancy 数组中的每一个对象 = 一张照片 + 一个空置房源
+   图片与房源数据一一对应
+========================================================= */
+
 const buildings = [
+
+  /* =========================
+     滨润大厦
+  ========================= */
+
   {
-    id: 1,
-    name: "滨润大厦",
-    tag: "重点推荐",
-    thumb: "image/1.png",
-    photos: ["image/1-1.png","image/1-2.png","image/1-3.png","image/1-4.png"],
-    area: "53,000㎡",
-    office: "30,00㎡",
-    position: "温州市鹿城区会展路1268号世温园3幢旁",
-    location: "会展路1268号世温园3幢旁",
-    overview: "雄踞温州滨江CBD核心之位，紧邻温州市民中心、世界温州人家园，踞守七都出入鹿城黄金门户，八大银行金融中心环绕，香格里拉、万和豪生酒店等五星配套云集。城市中央商务区，汇聚城市精粹。",
-    rent: "60–73 元/㎡·天",
-    status: "可出租",
-    heat: "92%",
-    traffic: "88",
-    people: "12.6万",
-    business: "95",
-    report: "该楼宇位于城市重点发展区域，交通和商业配套成熟，区域租赁需求指数较高，适合中大型企业办公及总部型机构布局。"
+    id:1,
+
+    name:"滨润大厦",
+
+    tag:"重点推荐",
+
+    thumb:"image/1.png",
+
+    area:"53,000㎡",
+
+    position:"温州市鹿城区会展路1268号世温园3幢旁",
+
+    location:"滨江大道与科技路交汇处",
+
+    overview:
+      "雄踞温州滨江CBD核心之位，紧邻温州市民中心、世界温州人家园，踞守七都出入鹿城黄金门户，八大银行金融中心环绕，香格里拉、万和豪生酒店等五星配套云集。城市中央商务区，汇聚城市精粹。",
+
+    status:"可出租",
+
+    heat:"92%",
+
+    traffic:"88",
+
+    people:"12.6万",
+
+    business:"95",
+
+    report:
+      "该楼宇位于城市重点发展区域，交通和商业配套成熟，区域租赁需求指数较高，适合中大型企业办公及总部型机构布局。",
+
+    /*
+      每张图片对应一个真实房源
+    */
+
+    vacancy:[
+
+      {
+        photo:"image/1-1.png",
+        room:"801室",
+        office:"230㎡",
+        property:"8元/㎡·月",
+        rent:"3.2元/㎡·天"
+      },
+
+      {
+        photo:"image/1-2.png",
+        room:"1002室",
+        office:"350㎡",
+        property:"8元/㎡·月",
+        rent:"3.4元/㎡·天"
+      },
+
+      {
+        photo:"image/1-3.png",
+        room:"1206室",
+        office:"520㎡",
+        property:"8元/㎡·月",
+        rent:"3.6元/㎡·天"
+      },
+
+      {
+        photo:"image/1-4.png",
+        room:"1501室",
+        office:"680㎡",
+        property:"8元/㎡·月",
+        rent:"3.5元/㎡·天"
+      }
+
+    ]
+
   },
+
+
+  /* =========================
+     展银大厦
+  ========================= */
+
   {
-    id: 2,
-    name: "展银大厦",
-    tag: "科创载体",
-    thumb: "image/2.png",
-    photos: ["image/2-1.png","image/2-2.png","image/2-1.png","image/2-2.png"],
-    area: "57,000㎡",
-    office: "36,000㎡",
-    position: "瓯江路和商务一路交叉口",
-    location: "瓯江路和商务一路交叉口",
-    overview: "大厦周边有体育休闲公园、温州市二十二中心，配套完善、交通便利。大厦地上主体20层，裙楼2层，地下两层。",
-    rent: "58–70 元/㎡·天",
-    status: "部分出租",
-    heat: "89%",
-    traffic: "91",
-    people: "9.8万",
-    business: "90",
-    report: "该项目产业集聚度较高，周边科技企业和创新主体密集，适合研发办公、企业孵化及数字经济类项目。"
+    id:2,
+
+    name:"展银大厦",
+
+    tag:"科创载体",
+
+    thumb:"image/2.png",
+
+    area:"57,000㎡",
+
+    position:"瓯江路和商务一路交叉口",
+
+    location:"科创大道88号",
+
+    overview:
+      "大厦周边有体育休闲公园、温州市二十二中心，配套完善、交通便利。大厦地上主体20层，裙楼2层，地下两层。",
+
+    status:"部分出租",
+
+    heat:"89%",
+
+    traffic:"91",
+
+    people:"9.8万",
+
+    business:"90",
+
+    report:
+      "该项目产业集聚度较高，周边科技企业和创新主体密集，适合研发办公、企业孵化及数字经济类项目。",
+
+    vacancy:[
+
+      {
+        photo:"image/2-1.png",
+        room:"602室",
+        office:"180㎡",
+        property:"7.5元/㎡·月",
+        rent:"2.6元/㎡·天"
+      },
+
+      {
+        photo:"image/2-2.png",
+        room:"805室",
+        office:"260㎡",
+        property:"7.5元/㎡·月",
+        rent:"2.8元/㎡·天"
+      },
+
+      {
+        photo:"image/2-3.png",
+        room:"1103室",
+        office:"420㎡",
+        property:"7.5元/㎡·月",
+        rent:"3.0元/㎡·天"
+      },
+
+      {
+        photo:"image/2-4.png",
+        room:"1506室",
+        office:"620㎡",
+        property:"7.5元/㎡·月",
+        rent:"3.2元/㎡·天"
+      }
+
+    ]
+
   },
+
+
+  /* =========================
+     缤江中心
+  ========================= */
+
   {
-    id: 3,
-    name: "滨江中心",
-    tag: "商务办公",
-    thumb: "image/binjiang.png",
-    photos: ["image/3.png","image/4.png","image/1.png","image/2.png"],
-    area: "105,800㎡",
-    office: "75,600㎡",
-    position: "中央商务区",
-    location: "中央商务环路12号",
-    overview: "高品质商务办公项目，毗邻轨道交通站点及城市核心商圈，适合金融、咨询、法律及大型企业办公。",
-    rent: "3.2–4.2 元/㎡·天",
-    status: "可出租",
-    heat: "95%",
-    traffic: "96",
-    people: "15.2万",
-    business: "98",
-    report: "项目具备较强商务集聚能力，城市交通可达性和商业配套指数领先，适合对办公形象、交通和客户接待有较高要求的企业。"
+    id:3,
+
+    name:"缤江中心",
+
+    tag:"商务办公",
+
+    thumb:"image/binjiang.png",
+
+    area:"145,700㎡",
+
+    position:"鹿城区望海路188号",
+
+    location:"鹿城区望海路188号",
+
+    overview:
+      "位于温州市鹿城区望海路与商务一路交叉口西北侧，地上四十层，地下四层（车位1007个）。项目自带约5700平方米高端生活商业配套区。大厦配套设施完善，配备270°环幕视野。",
+
+    status:"可出租",
+
+    heat:"95%",
+
+    traffic:"96",
+
+    people:"15.2万",
+
+    business:"98",
+
+    report:
+      "项目具备较强商务集聚能力，城市交通可达性和商业配套指数领先，适合对办公形象、交通和客户接待有较高要求的企业。",
+
+    vacancy:[
+
+      {
+        photo:"image/3.png",
+        room:"903室",
+        office:"280㎡",
+        property:"9元/㎡·月",
+        rent:"3.5元/㎡·天"
+      },
+
+      {
+        photo:"image/4.png",
+        room:"1208室",
+        office:"430㎡",
+        property:"9元/㎡·月",
+        rent:"3.7元/㎡·天"
+      },
+
+      {
+        photo:"image/1.png",
+        room:"1802室",
+        office:"650㎡",
+        property:"9元/㎡·月",
+        rent:"3.9元/㎡·天"
+      },
+
+      {
+        photo:"image/2.png",
+        room:"2601室",
+        office:"920㎡",
+        property:"9元/㎡·月",
+        rent:"4.1元/㎡·天"
+      }
+
+    ]
+
   },
+
+
+  /* =========================
+     金融大厦
+  ========================= */
+
   {
-    id: 4,
-    name: "金融大厦",
-    tag: "产业园区",
-    thumb: "image/jinrong.png",
-    photos: ["image/4.png","image/1.png","image/2.png","image/3.png"],
-    area: "58,600㎡",
-    office: "39,700㎡",
-    position: "城市更新示范片区",
-    location: "创意路66号",
-    overview: "融合办公、展示、文化创意与配套服务的复合型产业园区，空间灵活，适合新媒体、设计、文化和数字创意企业。",
-    rent: "1.8–2.6 元/㎡·天",
-    status: "可出租",
-    heat: "86%",
-    traffic: "83",
-    people: "7.5万",
-    business: "87",
-    report: "项目空间灵活、产业氛围突出，适合创意类和轻资产企业，具有较好的产业协同及城市更新示范价值。"
+    id:4,
+
+    name:"金融大厦",
+
+    tag:"产业园区",
+
+    thumb:"image/jinrong.png",
+
+    area:"45,000㎡",
+
+    position:"鹿城区商务三路",
+
+    location:"鹿城区商务三路",
+
+    overview:
+      "地处瓯江之畔，与东蒙山隔江相望。周边商务楼云集、配套完善交通便利。大厦地上15层，地下2层。引入金融科技等产业业态。",
+
+    status:"可出租",
+
+    heat:"86%",
+
+    traffic:"83",
+
+    people:"7.5万",
+
+    business:"87",
+
+    report:
+      "项目空间灵活、产业氛围突出，适合创意类和轻资产企业，具有较好的产业协同及城市更新示范价值。",
+
+    vacancy:[
+
+      {
+        photo:"image/4.png",
+        room:"501室",
+        office:"160㎡",
+        property:"6.5元/㎡·月",
+        rent:"2.0元/㎡·天"
+      },
+
+      {
+        photo:"image/1.png",
+        room:"703室",
+        office:"240㎡",
+        property:"6.5元/㎡·月",
+        rent:"2.2元/㎡·天"
+      },
+
+      {
+        photo:"image/2.png",
+        room:"1005室",
+        office:"380㎡",
+        property:"6.5元/㎡·月",
+        rent:"2.4元/㎡·天"
+      },
+
+      {
+        photo:"image/3.png",
+        room:"1202室",
+        office:"560㎡",
+        property:"6.5元/㎡·月",
+        rent:"2.6元/㎡·天"
+      }
+
+    ]
+
   }
+
 ];
 
+
+
+/* =========================================================
+   当前状态
+========================================================= */
+
 let currentBuilding = buildings[0];
-let detailScrollX = 0;
+
+let currentVacancyIndex = 0;
+
+
+
+/* =========================================================
+   首页楼宇列表
+========================================================= */
 
 function renderBuildingList(){
-  const list = document.getElementById("buildingList");
-  list.innerHTML = buildings.map(b => `
-    <article class="building-card">
-      <div class="building-thumb">
-        <img src="${b.thumb}" alt="${b.name}" onerror="this.style.opacity='.35'">
-      </div>
-      <div class="building-main">
-        <div class="building-name">${b.name}</div>
-        <div class="building-tag">${b.tag}</div>
-        <div class="building-meta">
-          总建筑面积：<b>${b.area}</b><br>
-          办公面积：<b>${b.office}</b><br>
-          项目位置：<b>${b.position}</b>
+
+  const list =
+    document.getElementById("buildingList");
+
+  list.innerHTML =
+    buildings.map(b => `
+
+      <article class="building-card">
+
+        <div class="building-thumb">
+
+          <img
+            src="${b.thumb}"
+            alt="${b.name}"
+            onerror="this.style.opacity='.35'"
+          >
+
         </div>
-        <div class="building-desc">${b.overview}</div>
-        <button class="view-btn" onclick="openBuilding(${b.id})">查看</button>
-      </div>
-    </article>
-  `).join("");
+
+
+        <div class="building-main">
+
+          <div class="building-name">
+            ${b.name}
+          </div>
+
+
+          <div class="building-tag">
+            ${b.tag}
+          </div>
+
+
+          <div class="building-meta">
+
+            总建筑面积：
+            <b>${b.area}</b>
+            <br>
+
+            空置房源：
+            <b>${b.vacancy.length}套</b>
+            <br>
+
+            项目位置：
+            <b>${b.position}</b>
+
+          </div>
+
+
+          <div class="building-desc">
+            ${b.overview}
+          </div>
+
+
+          <button
+            class="view-btn"
+            onclick="openBuilding(${b.id})">
+
+            查看
+
+          </button>
+
+        </div>
+
+      </article>
+
+    `).join("");
+
 }
+
+
+
+/* =========================================================
+   打开楼宇
+========================================================= */
 
 function openBuilding(id){
-  currentBuilding = buildings.find(b => b.id === id) || buildings[0];
-  document.getElementById("listPage").classList.remove("active");
-  document.getElementById("detailPage").classList.add("active");
+
+  currentBuilding =
+    buildings.find(b => b.id === id)
+    || buildings[0];
+
+  currentVacancyIndex = 0;
+
+
+  document
+    .getElementById("listPage")
+    .classList.remove("active");
+
+
+  document
+    .getElementById("detailPage")
+    .classList.add("active");
+
+
   renderDetail(currentBuilding);
-  window.scrollTo({top:0,behavior:"instant"});
+
+
+  window.scrollTo({
+    top:0,
+    behavior:"instant"
+  });
+
 }
+
+
+
+/* =========================================================
+   渲染楼宇详情
+========================================================= */
 
 function renderDetail(b){
-  const detail = document.getElementById("detailContent");
+
+  const detail =
+    document.getElementById("detailContent");
+
+
+  /*
+    获取房源数据
+  */
+
+  const vacancies =
+    b.vacancy || [];
+
+
+  /*
+    如果没有房源数据，避免页面报错
+  */
+
+  if(vacancies.length === 0){
+
+    detail.innerHTML = `
+      <div class="info-card">
+        暂无空置房源信息
+      </div>
+    `;
+
+    return;
+
+  }
+
+
+  /*
+    默认显示第一套房源
+  */
+
+  const first =
+    vacancies[0];
+
+
   detail.innerHTML = `
+
+    <!-- =========================
+         图片轮播
+    ========================= -->
+
     <div class="detail-banner">
-      <div class="gallery" id="detailGallery">
-        ${b.photos.map((src,i)=>`
-          <div class="gallery-slide">
-            <img src="${src}" alt="${b.name}照片${i+1}" onclick="openPhoto('${src}')"
-                 onerror="this.style.opacity='.25'">
-            <div class="gallery-count">${i+1} / ${b.photos.length}</div>
-            <div class="gallery-tip">点击照片全屏查看 · 左右滑动切换</div>
+
+      <div
+        class="gallery"
+        id="detailGallery"
+      >
+
+        ${vacancies.map((v,i)=>`
+
+          <div
+            class="gallery-slide"
+            data-index="${i}"
+          >
+
+            <img
+              src="${v.photo}"
+              alt="${b.name} ${v.room}"
+              onclick="openPhoto('${v.photo}')"
+              onerror="this.style.opacity='.25'"
+            >
+
+
+            <div class="gallery-count">
+
+              ${i+1} / ${vacancies.length}
+
+            </div>
+
+
+            <div class="gallery-tip">
+
+              ${v.room} · 点击照片全屏查看
+
+            </div>
+
           </div>
+
         `).join("")}
+
       </div>
-      <div class="dots" id="galleryDots">
-        ${b.photos.map((_,i)=>`<span class="dot ${i===0?'active':''}"></span>`).join("")}
+
+
+      <!-- 小圆点 -->
+
+      <div
+        class="dots"
+        id="galleryDots"
+      >
+
+        ${vacancies.map((_,i)=>`
+
+          <span
+            class="dot ${i===0?'active':''}"
+          ></span>
+
+        `).join("")}
+
       </div>
+
     </div>
+
+
+
+    <!-- 当前照片对应的房源 -->
+
+    <div
+      class="current-vacancy"
+      id="currentVacancy"
+    >
+
+      当前房源：
+      ${first.room}
+      ·
+      ${first.office}
+
+    </div>
+
+
+
+    <!-- =========================
+         楼宇基本信息
+    ========================= -->
 
     <div class="detail-title-card">
+
       <div class="detail-title-line">
-        <div class="detail-name">${b.name}</div>
-        <div class="status">${b.status}</div>
+
+        <div class="detail-name">
+          ${b.name}
+        </div>
+
+        <div class="status">
+          ${b.status}
+        </div>
+
       </div>
-      <div class="detail-location">📍 ${b.location}</div>
+
+
+      <div class="detail-location">
+
+        📍 ${b.location}
+
+      </div>
+
     </div>
 
+
+
+    <!-- =========================
+         空置房源信息
+    ========================= -->
+
     <div class="info-card">
-      <div class="card-title">楼宇基本信息</div>
+
+      <div class="card-title">
+        空置房源信息
+      </div>
+
+
       <div class="info-grid">
-        <div class="info-item"><span>总建筑面积</span><strong>${b.area}</strong></div>
-        <div class="info-item"><span>办公面积</span><strong>${b.office}</strong></div>
-        <div class="info-item"><span>项目位置</span><strong style="font-size:13px">${b.position}</strong></div>
-        <div class="info-item"><span>参考租金</span><strong style="font-size:14px">${b.rent}</strong></div>
+
+
+        <!-- 房间号 -->
+
+        <div class="info-item">
+
+          <span>
+            空置房间号
+          </span>
+
+          <strong id="vacancyRoom">
+            ${first.room}
+          </strong>
+
+        </div>
+
+
+        <!-- 办公面积 -->
+
+        <div class="info-item">
+
+          <span>
+            办公面积
+          </span>
+
+          <strong id="vacancyOffice">
+            ${first.office}
+          </strong>
+
+        </div>
+
+
+        <!-- 物业费 -->
+
+        <div class="info-item">
+
+          <span>
+            物业费
+          </span>
+
+          <strong
+            id="vacancyProperty"
+            style="font-size:13px"
+          >
+            ${first.property}
+          </strong>
+
+        </div>
+
+
+        <!-- 参考租金 -->
+
+        <div class="info-item">
+
+          <span>
+            参考租金
+          </span>
+
+          <strong
+            id="vacancyRent"
+            style="font-size:14px"
+          >
+            ${first.rent}
+          </strong>
+
+        </div>
+
+
       </div>
+
+
+      <div class="vacancy-switch">
+
+        左右滑动上方照片，可查看不同空置房源
+
+      </div>
+
     </div>
 
+
+
+    <!-- =========================
+         项目概况
+    ========================= -->
+
     <div class="info-card">
-      <div class="card-title">项目概况</div>
-      <div class="summary">${b.overview}</div>
+
+      <div class="card-title">
+        项目概况
+      </div>
+
+      <div class="summary">
+        ${b.overview}
+      </div>
+
     </div>
+
+
+
+    <!-- =========================
+         智慧城市数据
+    ========================= -->
 
     <div class="data-card">
-      <div class="card-title">智慧城市数据</div>
-      <div class="data-grid">
-        <div class="data-box"><strong>${b.heat}</strong><span>区域热度</span></div>
-        <div class="data-box"><strong>${b.traffic}</strong><span>交通指数</span></div>
-        <div class="data-box"><strong>${b.people}</strong><span>周边人口</span></div>
-        <div class="data-box"><strong>${b.business}</strong><span>商业指数</span></div>
+
+      <div class="card-title">
+        智慧城市数据
       </div>
-      <button class="primary-btn" onclick="showReport()">查看智慧分析报告</button>
+
+
+      <div class="data-grid">
+
+        <div class="data-box">
+
+          <strong>${b.heat}</strong>
+
+          <span>
+            区域热度
+          </span>
+
+        </div>
+
+
+        <div class="data-box">
+
+          <strong>${b.traffic}</strong>
+
+          <span>
+            交通指数
+          </span>
+
+        </div>
+
+
+        <div class="data-box">
+
+          <strong>${b.people}</strong>
+
+          <span>
+            周边人口
+          </span>
+
+        </div>
+
+
+        <div class="data-box">
+
+          <strong>${b.business}</strong>
+
+          <span>
+            商业指数
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <button
+        class="primary-btn"
+        onclick="showReport()">
+
+        查看智慧分析报告
+
+      </button>
+
     </div>
+
   `;
 
-  const gallery = document.getElementById("detailGallery");
-  const dots = [...document.querySelectorAll("#galleryDots .dot")];
 
-  gallery.addEventListener("scroll",()=>{
-    const index = Math.min(
-      b.photos.length-1,
-      Math.max(0,Math.round(gallery.scrollLeft / gallery.clientWidth))
-    );
-    dots.forEach((d,i)=>d.classList.toggle("active",i===index));
-  },{passive:true});
+
+  /*
+    获取轮播容器和圆点
+  */
+
+  const gallery =
+    document.getElementById("detailGallery");
+
+  const dots =
+    [
+      ...document.querySelectorAll(
+        "#galleryDots .dot"
+      )
+    ];
+
+
+
+  /*
+    监听左右滑动
+  */
+
+  gallery.addEventListener(
+    "scroll",
+    () => {
+
+      const index =
+        Math.min(
+          vacancies.length - 1,
+          Math.max(
+            0,
+            Math.round(
+              gallery.scrollLeft /
+              gallery.clientWidth
+            )
+          )
+        );
+
+
+      /*
+        防止重复更新
+      */
+
+      if(index !== currentVacancyIndex){
+
+        currentVacancyIndex = index;
+
+        updateVacancyInfo(
+          vacancies[index],
+          index
+        );
+
+      }
+
+
+      /*
+        更新底部圆点
+      */
+
+      dots.forEach(
+        (d,i) => {
+
+          d.classList.toggle(
+            "active",
+            i === index
+          );
+
+        }
+      );
+
+    },
+    {
+      passive:true
+    }
+  );
+
 }
+
+
+
+/* =========================================================
+   更新当前空置房源数据
+========================================================= */
+
+function updateVacancyInfo(vacancy,index){
+
+  if(!vacancy) return;
+
+
+  /*
+    更新房间号
+  */
+
+  const room =
+    document.getElementById("vacancyRoom");
+
+  if(room){
+    room.textContent =
+      vacancy.room;
+  }
+
+
+  /*
+    更新办公面积
+  */
+
+  const office =
+    document.getElementById("vacancyOffice");
+
+  if(office){
+    office.textContent =
+      vacancy.office;
+  }
+
+
+  /*
+    更新物业费
+  */
+
+  const property =
+    document.getElementById("vacancyProperty");
+
+  if(property){
+    property.textContent =
+      vacancy.property;
+  }
+
+
+  /*
+    更新参考租金
+  */
+
+  const rent =
+    document.getElementById("vacancyRent");
+
+  if(rent){
+    rent.textContent =
+      vacancy.rent;
+  }
+
+
+  /*
+    更新“当前房源”提示
+  */
+
+  const current =
+    document.getElementById("currentVacancy");
+
+  if(current){
+
+    current.textContent =
+      "当前房源：" +
+      vacancy.room +
+      " · " +
+      vacancy.office;
+
+  }
+
+}
+
+
+
+/* =========================================================
+   返回首页
+========================================================= */
 
 function goBack(){
-  document.getElementById("detailPage").classList.remove("active");
-  document.getElementById("listPage").classList.add("active");
-  window.scrollTo({top:0,behavior:"instant"});
+
+  document
+    .getElementById("detailPage")
+    .classList.remove("active");
+
+
+  document
+    .getElementById("listPage")
+    .classList.add("active");
+
+
+  window.scrollTo({
+    top:0,
+    behavior:"instant"
+  });
+
 }
+
+
+
+/* =========================================================
+   智慧分析报告
+========================================================= */
 
 function showReport(){
-  document.getElementById("reportText").textContent = currentBuilding.report;
-  document.getElementById("reportModal").classList.add("show");
+
+  document
+    .getElementById("reportText")
+    .textContent =
+      currentBuilding.report;
+
+
+  document
+    .getElementById("reportModal")
+    .classList.add("show");
+
 }
+
+
 function hideReport(){
-  document.getElementById("reportModal").classList.remove("show");
+
+  document
+    .getElementById("reportModal")
+    .classList.remove("show");
+
 }
+
+
 function closeReport(e){
-  if(e.target.id === "reportModal") hideReport();
+
+  if(e.target.id === "reportModal"){
+
+    hideReport();
+
+  }
+
 }
+
+
+
+/* =========================================================
+   全屏照片
+========================================================= */
 
 function openPhoto(src){
-  document.getElementById("fullPhoto").src = src;
-  document.getElementById("photoViewer").classList.add("show");
-}
-function closePhoto(){
-  document.getElementById("photoViewer").classList.remove("show");
-  document.getElementById("fullPhoto").src = "";
+
+  document
+    .getElementById("fullPhoto")
+    .src = src;
+
+
+  document
+    .getElementById("photoViewer")
+    .classList.add("show");
+
 }
 
-/* 浏览器返回键：详情页返回列表，照片全屏先关闭 */
-window.addEventListener("popstate",()=>{
-  if(document.getElementById("photoViewer").classList.contains("show")){
-    closePhoto(); return;
+
+function closePhoto(){
+
+  document
+    .getElementById("photoViewer")
+    .classList.remove("show");
+
+
+  document
+    .getElementById("fullPhoto")
+    .src = "";
+
+}
+
+
+
+/* =========================================================
+   浏览器返回键
+========================================================= */
+
+window.addEventListener(
+  "popstate",
+  () => {
+
+    if(
+      document
+        .getElementById("photoViewer")
+        .classList
+        .contains("show")
+    ){
+
+      closePhoto();
+
+      return;
+
+    }
+
+
+    if(
+      document
+        .getElementById("detailPage")
+        .classList
+        .contains("active")
+    ){
+
+      goBack();
+
+    }
+
   }
-  if(document.getElementById("detailPage").classList.contains("active")){
-    goBack();
-  }
-});
+);
+
+
+
+/* =========================================================
+   初始化
+========================================================= */
 
 renderBuildingList();
+
 </script>
+
 </body>
+
 </html>
